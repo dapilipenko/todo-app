@@ -1,0 +1,154 @@
+/* ── Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #e2e8f0;
+}
+
+/* ── App card ── */
+.app {
+  max-width: 480px;
+  margin: 4rem auto;
+  padding: 2.5rem 2rem 2rem;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.app h1 {
+  text-align: center;
+  margin: 0 0 2rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #a78bfa, #818cf8, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── List ── */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* ── Item ── */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.todo-item:hover {
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Checkbox ── */
+.todo-item .checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  border: 2px solid rgba(167, 139, 250, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+}
+
+.todo-item:hover .checkbox {
+  border-color: #a78bfa;
+}
+
+.todo-item.completed .checkbox {
+  background: linear-gradient(135deg, #a78bfa, #6366f1);
+  border-color: transparent;
+  transform: scale(1.05);
+}
+
+.todo-item.completed .checkbox::after {
+  content: '✓';
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* ── Title ── */
+.todo-item .title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: opacity 0.3s ease;
+}
+
+.todo-item.completed .title {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+/* ── Counter badge ── */
+.app .counter {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+}
+
+/* ── Light mode ── */
+@media (prefers-color-scheme: light) {
+  body {
+    background: linear-gradient(135deg, #e0e7ff, #f0f4ff, #ddd6fe);
+    color: #1e293b;
+  }
+
+  .app {
+    background: rgba(255, 255, 255, 0.65);
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 32px rgba(100, 100, 140, 0.12);
+  }
+
+  .app h1 {
+    background: linear-gradient(135deg, #7c3aed, #6366f1);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .todo-item {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  .todo-item:hover {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 14px rgba(100, 100, 140, 0.1);
+  }
+
+  .app .counter {
+    color: rgba(0, 0, 0, 0.35);
+  }
+}
