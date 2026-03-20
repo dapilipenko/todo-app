@@ -46,13 +46,13 @@ body {
 /* ── Item ── */
 .todo-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.85rem;
   padding: 0.9rem 1.1rem;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  cursor: pointer;
+  cursor: default;
   transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -72,6 +72,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  cursor: pointer;
   transition: background 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
 }
 
@@ -103,6 +104,73 @@ body {
 .todo-item.completed .title {
   text-decoration: line-through;
   opacity: 0.4;
+}
+
+.todo-item .actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.todo-item button {
+  border: none;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #e7eaf5;
+  background: rgba(255, 255, 255, 0.06);
+  transition: background 120ms ease, opacity 120ms ease, transform 120ms ease;
+}
+
+.todo-item button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.todo-item button:active {
+  transform: translateY(0);
+  opacity: 0.9;
+}
+
+.todo-item button.primary {
+  background: linear-gradient(135deg, #6a8dff, #4f6ddc);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(79, 109, 220, 0.22);
+}
+
+.todo-item button.ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: #9db6ff;
+}
+
+.todo-item button.danger {
+  background: rgba(255, 99, 132, 0.14);
+  color: #ff9eb0;
+}
+
+.edit-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.edit-form input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f5f7fb;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.edit-form input:focus {
+  border-color: #7ea7ff;
+  box-shadow: 0 0 0 3px rgba(126, 167, 255, 0.2);
 }
 
 /* ── Counter badge ── */
@@ -217,48 +285,31 @@ h1 {
   font-size: 14px;
 }
 
+.info {
+  margin: 12px 0;
+  color: #c7cbe3;
+}
+
+.error {
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 99, 132, 0.15);
+  color: #ffb3c1;
+  border: 1px solid rgba(255, 99, 132, 0.28);
+}
+
+.muted {
+  margin: 12px 0;
+  color: rgba(255, 255, 255, 0.55);
+}
+
 .todo-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   gap: 10px;
-}
-
-.todo-list li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  color: #e7eaf5;
-}
-
-.todo-list li.done span {
-  text-decoration: line-through;
-  color: #8fa0d0;
-}
-
-.todo-list button {
-  border: none;
-  border-radius: 10px;
-  padding: 8px 10px;
-  background: rgba(255, 99, 132, 0.14);
-  color: #ff8fa3;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 120ms ease, opacity 120ms ease;
-}
-
-.todo-list button:hover {
-  background: rgba(255, 99, 132, 0.22);
-}
-
-.todo-list button:active {
-  opacity: 0.85;
 }
 
 p {
